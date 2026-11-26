@@ -1,0 +1,25 @@
+USE patient_recordsdb
+
+CREATE TABLE patient_detail (
+    patient_id     VARCHAR(10) PRIMARY KEY,
+    first_name     VARCHAR(50),
+    surname        VARCHAR(50),
+    age            INT NOT NULL,
+    sex            CHAR(1),
+    date_of_birth  DATE,
+    is_admitted    VARCHAR(12)
+);
+
+INSERT INTO patient_detail (patient_id, first_name, surname, age, sex, date_of_birth, is_admitted)
+VALUES 
+        ('001', 'Soso', 'Qagana', 19, 'M', '2007-06-24', 'Admitted'),
+        ('002', 'Thandi',  'Mokoena',     41, 'F', '1985-03-12', 'Not Admitted'),
+        ('003', 'Sipho',   'Dlamini',     53, 'M', '1972-11-30', 'Admitted'),
+        ('004', 'Lerato',  'Khumalo',     28, 'F', '1998-08-05', 'Not Admitted'),
+        ('005', 'Johan',   'van der Merwe', 66, 'M', '1960-01-19', 'Admitted'),
+        ('006', 'Naledi',  'Sithole',     10, 'F', '2015-12-02', 'Admitted'),
+        ('007', 'Thabo',   'Nkosi',       36, 'M', '1990-05-27', 'Not Admitted'),
+        ('008', 'Ayesha',  'Patel',       23, 'F', '2003-10-14', 'Not Admitted'),
+        ('009', 'Pieter',  'Botha',       78, 'M', '1948-07-08', 'Admitted'),
+        ('010', 'Zanele',  'Mahlangu',     5, 'F', '2021-02-20', 'Not Admitted'),
+        ('011', 'Mandla',  'Zulu',        47, 'M', '1979-09-30', 'Admitted');
