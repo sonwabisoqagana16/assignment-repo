@@ -1,0 +1,61 @@
+def generate_weekly_report(visits, week_label):
+    if len(visits) == 0:
+        return f"WEEKLY CLINICAL REPORT - {week_label}\nNo visits recorded this week."
+
+    total_visits = len(visits)
+
+    patient_names = set()
+    for visit in visits:
+        patient_names.add(visit["patient"])
+    unique_patients = len(patient_names)
+
+    total_age = 0
+    for visit in visits:
+        total_age += visit["age"]
+    average_age = total_age / total_visits
+
+    diagnosis_counts = {}
+    for visit in visits:
+        diagnosis = visit["diagnosis"]
+        if diagnosis in diagnosis_counts:
+            diagnosis_counts[diagnosis] += 1
+        else:
+            diagnosis_counts[diagnosis] = 1
+
+    day_counts = {}
+    for visit in visits:
+        day = visit["day"]
+        day_counts[day] = day_counts.get(day, 0) + 1
+
+    lines = []
+    lines.append(f"WEEKLY CLINICAL REPORT - {week_label}")
+    lines.append("=" * 40)
+    lines.append(f"Total visits:      {total_visits}")
+    lines.append(f"Unique patients:   {unique_patients}")
+    lines.append(f"Average age:       {average_age:.1f}")
+    lines.append("")
+    lines.append("Diagnoses (most common first):")
+    for diagnosis, count in sorted(diagnosis_counts.items(), key=lambda item: item[1], reverse=True):
+        lines.append(f"  - {diagnosis}: {count}")
+    lines.append("")
+    lines.append("Visits per day:")
+    for day, count in day_counts.items():
+        lines.append(f"  - {day}: {count}")
+
+    return "\n".join(lines)
+
+
+if __name__ == "__main__":
+    sample_visits = [
+        {"patient": "Anna",  "age": 34, "diagnosis": "Flu",          "day": "Mon"},
+        {"patient": "Ben",   "age": 52, "diagnosis": "Hypertension", "day": "Mon"},
+        {"patient": "Carla", "age": 8,  "diagnosis": "Flu",          "day": "Tue"},
+        {"patient": "Anna",  "age": 34, "diagnosis": "Follow-up",    "day": "Thu"},
+        {"patient": "Dev",   "age": 61, "diagnosis": "Diabetes",     "day": "Fri"},
+    ]
+
+    report = generate_weekly_report(sample_visits, "Week of 23 Nov 2026")
+    print(report)
+
+    with open("weekly_report.txt", "w") as file:
+        file.write(report)
