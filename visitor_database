@@ -1,0 +1,28 @@
+CREATE DATABASE visitingdb;
+
+CREATE TABLE visitor_details(
+  visitor_ID VARCHAR(4) PRIMARY KEY,
+  visitor_Name VARCHAR(100),
+  visitor_Surname VARCHAR(100),
+  patient_Name VARCHAR(100),
+  contacts VARCHAR(10),
+  identity_number VARCHAR(13),
+  date_of_visit DATE,
+  time_of_entry TIME, 
+  time_of_departure,
+),
+
+INSERT INTO visitor_details
+VALUES
+      ('0001', 'Thandazwa', 'Qagana', 'Sonwabiso', '0614841096', '7609185675081', '2026-10-08', '10:31:05', '13:01:45'),
+      ('0002', 'Nomvula', 'Dlamini', 'Zodwa', '0723056418', '8503120412080', '2026-10-08', '08:15:22', '16:45:10'),
+      ('0003', 'Sipho', 'Mokoena', 'Thabo', '0831927645', '9206275831083', '2026-10-09', '09:02:47', '12:30:15'),
+      ('0004', 'Lerato', 'Nkosi', 'Palesa', '0649382015', '0111040238086', '2026-10-09', '07:58:33', '15:20:09'),
+      ('0005', 'Mandla', 'Khumalo', 'Bheki', '0762210894', '8809306107083', '2026-10-12', '11:45:10', '17:05:55'),
+      ('0006', 'Ayanda', 'Ntuli', 'Lwazi', '0715598302', '9702150956086', '2026-10-12', '08:30:00', '14:10:38'),
+      ('0007', 'Zanele', 'Mahlangu', 'Nokuthula', '0827743196', '7905215344089', '2026-10-13', '10:05:19', '13:48:27'),
+      ('0008', 'Tshepo', 'Molefe', 'Kagiso', '0608851723', '9408101782080', '2026-10-14', '09:40:51', '16:12:04'),
+      ('0009', 'Naledi', 'Sithole', 'Busisiwe', '0794430581', '0001295520082', '2026-10-15', '07:45:36', '11:55:20'),
+      ('0010', 'Lwandle', 'Zulu', 'Sandile', '0736619248', '8307040471089', '2026-10-16', '12:20:14', '18:00:42');
+
+UPDATE visitor_details SET patient_name = 'Sonwabiso Qagana' WHERE visitor_ID = '0001';
